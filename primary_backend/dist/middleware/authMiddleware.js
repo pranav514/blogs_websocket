@@ -14,11 +14,11 @@ const jsonwebtoken_1 = require("jsonwebtoken");
 const authMiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
-        const token = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.split(' ')[1];
+        const token = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.split(" ")[1];
         if (!token) {
-            throw new Error('Authentication failed: No token provided');
+            throw new Error("Authentication failed: No token provided");
         }
-        const decodedToken = (0, jsonwebtoken_1.verify)(token, 'secret');
+        const decodedToken = (0, jsonwebtoken_1.verify)(token, "secret");
         console.log(decodedToken);
         if (!decodedToken) {
             res.status(401).json({
@@ -26,12 +26,13 @@ const authMiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
             });
         }
         else {
+            req.userId = decodedToken;
             next();
         }
     }
     catch (error) {
         res.status(400).json({
-            error: "error ocurred  in authentication"
+            error: "error ocurred  in authentication",
         });
     }
 });

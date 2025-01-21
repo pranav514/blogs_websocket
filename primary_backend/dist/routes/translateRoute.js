@@ -58,6 +58,7 @@ router.post("/translation/:id", (req, res) => __awaiter(void 0, void 0, void 0, 
                 res.status(200).json({
                     message: "blog added to the database succesfully",
                     blog: blog,
+                    language: language
                 });
             }
         });
