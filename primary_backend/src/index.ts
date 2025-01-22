@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/translate", translateRoute);
-app.use('/api/v1/blog' , authMiddleware,blogRoute)
+app.use('/api/v1/blog',blogRoute)
 app.listen(3000, ()  => {
   console.log("connected to the localhost");
 });
