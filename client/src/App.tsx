@@ -8,8 +8,8 @@ import SignUp from './pages/Authentication/SignUp';
 import Calendar from './pages/Calendar';
 import Chart from './pages/Chart';
 import ECommerce from './pages/Dashboard/ECommerce';
-import FormElements from './pages/Form/FormElements';
-import FormLayout from './pages/Form/FormLayout';
+import FormElements from './pages/Form/AddBlog';
+import FormLayout from './pages/Form/UpdateBlog';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Tables from './pages/Tables';
@@ -62,10 +62,10 @@ function App() {
           }
         />
         <Route
-          path="/forms/form-elements"
+          path="/blog/add-blogs"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Add Blog | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <FormElements />
             </>
           }
@@ -74,7 +74,7 @@ function App() {
           path="/forms/form-layout"
           element={
             <>
-              <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Update Blog" />
               <FormLayout />
             </>
           }

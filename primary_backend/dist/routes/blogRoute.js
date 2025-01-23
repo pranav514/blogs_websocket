@@ -84,19 +84,20 @@ router.get("/getall", (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const blog = yield prisma.blog.findMany({ take: 10 });
     res.status(200).json({
         message: "blog fetched succesfully",
-        blog: blog
+        blog: blog,
     });
 }));
-router.get("/getbyuser", authMiddleware_1.authMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const userId = req.userId;
+router.get("/getbyuser/:id", authMiddleware_1.authMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const userId = req.params.id;
+    console.log(userId);
     const blog = yield prisma.blog.findMany({
         where: {
-            authorId: userId
-        }
+            authorId: userId,
+        },
     });
-    res.status(400).json({
+    res.status(200).json({
         message: "blog fetched sucesfully for the specific user",
-        blog: blog
+        blog: blog,
     });
 }));
 exports.default = router;
