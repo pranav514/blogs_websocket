@@ -4,7 +4,7 @@ import { authMiddleware } from "../middleware/authMiddleware";
 import { isTemplateLiteralTypeNode } from "typescript";
 const prisma = new PrismaClient();
 const router = express.Router();
-router.put("/update/:id",authMiddleware, async (req, res) => {
+router.put("/update/:id", authMiddleware, async (req, res) => {
   try {
     const { title, content } = req.body;
     const userId = req.userId;
@@ -49,7 +49,7 @@ router.put("/update/:id",authMiddleware, async (req, res) => {
   }
 });
 
-router.delete("/delete/:id",authMiddleware, async (req, res) => {
+router.delete("/delete/:id", authMiddleware, async (req, res) => {
   const blogId = req.params.id;
   const userId = req.userId;
   const blog = await prisma.blog.delete({
@@ -71,21 +71,22 @@ router.delete("/delete/:id",authMiddleware, async (req, res) => {
 router.get("/getall", async (req, res) => {
   const blog = await prisma.blog.findMany({ take: 10 });
   res.status(200).json({
-    message  : "blog fetched succesfully",
-    blog : blog
-  })
+    message: "blog fetched succesfully",
+    blog: blog,
+  });
 });
 
-router.get("/getbyuser" , authMiddleware , async(req , res) => {
-  const userId =  req.userId
+router.get("/getbyuser/:id", authMiddleware, async (req, res) => {
+  const userId = req.params.id;
+  console.log(userId);
   const blog = await prisma.blog.findMany({
-    where : {
-      authorId :userId
-    }
-  })
-  res.status(400).json({
-    message : "blog fetched sucesfully for the specific user",
-    blog : blog
-  })
-})
+    where: {
+      authorId: userId,
+    },
+  });
+  res.status(200).json({
+    message: "blog fetched sucesfully for the specific user",
+    blog: blog,
+  });
+});
 export default router;

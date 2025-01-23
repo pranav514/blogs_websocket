@@ -245,7 +245,8 @@ const SignIn: React.FC = () => {
                       );
                       console.log(res.data);
                       localStorage.setItem("token" , res.data.token)
-                      navigate('/dashboard');
+                      localStorage.setItem("userId" , res.data.user.id)
+                      navigate('/');
                     }}
                   >
                     Sign IN
