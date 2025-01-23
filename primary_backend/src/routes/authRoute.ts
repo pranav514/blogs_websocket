@@ -15,7 +15,10 @@ interface User {
 router.post("/signup", async (req: Request, res: Response) => {
   try {
     const { email, password, firstname, lastname }: User = req.body;
-
+    console.log(email);
+    console.log(password);
+    console.log(firstname);
+    console.log(lastname);
     if (!email || !password || !firstname || !lastname) {
       res.status(400).json({
         error: "Enter complete information",

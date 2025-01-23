@@ -20,6 +20,10 @@ const prisma = new client_1.PrismaClient();
 router.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, password, firstname, lastname } = req.body;
+        console.log(email);
+        console.log(password);
+        console.log(firstname);
+        console.log(lastname);
         if (!email || !password || !firstname || !lastname) {
             res.status(400).json({
                 error: "Enter complete information",
